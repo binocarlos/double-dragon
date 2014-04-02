@@ -1,0 +1,18 @@
+{
+  "name": "double-dragon",
+  "repo": "binocarlos/double-dragon",
+  "description": "Sprite library for old skool stop frame animation made from a sequence of images",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "component/preloader": "*"
+  },
+  "development": {},
+  "license": "MIT",
+  "main": "index.js",
+  "styles": [],
+  "scripts": [
+    "index.js"
+  ],
+  "remotes": []
+}
