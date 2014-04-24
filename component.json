@@ -5,7 +5,8 @@
   "version": "0.0.1",
   "keywords": [],
   "dependencies": {
-    "component/preloader": "*"
+    "component/preloader": "*",
+    "component/emitter": "*"
   },
   "development": {},
   "license": "MIT",
