@@ -90,11 +90,11 @@ DoubleDragon.prototype.stop = function(direction){
 DoubleDragon.prototype.showFrame = function(index){
 	
 	if(this._visibleimg){
-		this._visibleimg.style.opacity = 0;
+		this._visibleimg.style.display = 'none';
 	}
 	this._currentindex = index;
 	this._visibleimg = this._imgs[this._currentindex];
-	this._visibleimg.style.opacity = 1;
+	this._visibleimg.style.display = 'block';
 
 	if(index==0){
 		this.emit('begin');
@@ -111,7 +111,7 @@ DoubleDragon.prototype.render = function(elem){
 		var img = new Image;
     img.src = url;
     img.style.position = 'absolute';
-    img.style.opacity = 0;
+    img.style.display = 'none';
     self.emit('position', img);
     elem.appendChild(img);
 		self._imgs.push(img);
