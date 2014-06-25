@@ -7,6 +7,7 @@ function DoubleDragon(){
 	this._imgs = [];
 	this._currentindex = 0;
 	this.fps(30);
+	this._playCount = 0
 }
 
 Emitter(DoubleDragon.prototype);
@@ -23,6 +24,10 @@ DoubleDragon.prototype.playOnce = function(direction, done){
 		direction = 1;
 	}
 
+	this._playCount++
+
+
+
 	this.start(1, function(index){
 		return index<=self._imgs.length;
 	})
@@ -31,6 +36,8 @@ DoubleDragon.prototype.playOnce = function(direction, done){
 
 DoubleDragon.prototype.play = function(direction){
 	direction = direction || 1;
+
+	this._playCount++
 
 	this.start();
 }
@@ -88,17 +95,23 @@ DoubleDragon.prototype.stop = function(direction){
 }
 
 DoubleDragon.prototype.showFrame = function(index){
-	
+
+	var ieHackTimeout = this._playCount>1 ? 1 : 30
+
 	if(this._visibleimg){
-		this._visibleimg.style.opacity = 0
+		var hideimg = this._visibleimg
+		setTimeout(function(){
+			hideimg.style.display = 'none'
+		}, ieHackTimeout)
+		
 		//this._visibleimg.style.visibility = 'hidden';
 		//this._visibleimg.style.display = 'none';
 	}
 	this._currentindex = index;
 	this._visibleimg = this._imgs[this._currentindex];
-	this._visibleimg.style.opacity = 1
+	//this._visibleimg.style.opacity = 1
 	//this._visibleimg.style.visibility = 'visible';
-	//this._visibleimg.style.display = 'block';
+	this._visibleimg.style.display = 'block';
 
 	if(index==0){
 		this.emit('begin');
@@ -115,9 +128,9 @@ DoubleDragon.prototype.render = function(elem){
 		var img = new Image;
     img.src = url;
     img.style.position = 'absolute';
-    img.style.opacity = 0
+    //img.style.opacity = 0
     //img.style.visibility = 'hidden';
-    //img.style.display = 'none';
+    img.style.display = 'none';
     self.emit('position', img);
     elem.appendChild(img);
 		self._imgs.push(img);
