@@ -90,12 +90,12 @@ DoubleDragon.prototype.stop = function(direction){
 DoubleDragon.prototype.showFrame = function(index){
 	
 	if(this._visibleimg){
-		this._visibleimg.style.visibility = 'visible';
+		this._visibleimg.style.visibility = 'hidden';
 		//this._visibleimg.style.display = 'none';
 	}
 	this._currentindex = index;
 	this._visibleimg = this._imgs[this._currentindex];
-	this._visibleimg.style.visibility = 'block';
+	this._visibleimg.style.visibility = 'visible';
 	//this._visibleimg.style.display = 'block';
 
 	if(index==0){
