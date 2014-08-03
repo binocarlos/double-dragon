@@ -2,8 +2,9 @@ var Preloader = require('preloader');
 var Emitter = require('emitter');
 
 
-function DoubleDragon(){
+function DoubleDragon(opts){
 	Emitter.call(this);
+	this._opts = opts || {}
 	this._imgs = [];
 	this._currentindex = 0;
 	this.fps(30);
@@ -99,10 +100,16 @@ DoubleDragon.prototype.showFrame = function(index){
 	var ieHackTimeout = this._playCount>1 ? 1 : 30
 
 	if(this._visibleimg){
-		var hideimg = this._visibleimg
-		setTimeout(function(){
+		if(this._opts.directMode){
 			hideimg.style.display = 'none'
-		}, ieHackTimeout)
+		}
+		else{
+			var hideimg = this._visibleimg
+			setTimeout(function(){
+				hideimg.style.display = 'none'
+			}, ieHackTimeout)	
+		}
+		
 		
 		//this._visibleimg.style.visibility = 'hidden';
 		//this._visibleimg.style.display = 'none';
@@ -169,6 +176,6 @@ DoubleDragon.prototype.load = function(opts){
 	})
 }
 
-module.exports = function(){
-	return new DoubleDragon();
+module.exports = function(opts){
+	return new DoubleDragon(opts);
 }
