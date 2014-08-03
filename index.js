@@ -100,11 +100,11 @@ DoubleDragon.prototype.showFrame = function(index){
 	var ieHackTimeout = this._playCount>1 ? 1 : 30
 
 	if(this._visibleimg){
+		var hideimg = this._visibleimg
 		if(this._opts.directMode){
 			hideimg.style.display = 'none'
 		}
 		else{
-			var hideimg = this._visibleimg
 			setTimeout(function(){
 				hideimg.style.display = 'none'
 			}, ieHackTimeout)	
